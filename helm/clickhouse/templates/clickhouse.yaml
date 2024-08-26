@@ -17,5 +17,5 @@ spec:
     clusters:
       - name:  {{ .Values.name }}-cluster
         layout:
-          shardsCount: {{ .Values.shards }}
-          replicasCount: {{ .Values.replicas }}
+          shardsCount: {{ .Values.clickhouse.shards }}
+          replicasCount: {{ .Values.clickhouse.replicas }}

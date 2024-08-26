@@ -1,8 +1,8 @@
-name: kdt
+name: fstore
 
 clickhouse:
   shards: 1
   replicas: 2
 
 keeper:
-  replicas: 1
+  replicas: 2

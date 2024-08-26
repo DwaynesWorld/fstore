@@ -24,28 +24,24 @@ CREATE TABLE songs (
     time_signature Float64,
     year Int64,
     release_date String
-) ENGINE = MergeTree
-ORDER BY
-    (name, release_date);
+) 
+ENGINE = MergeTree
+ORDER BY (name, release_date);
 
-INSERT INTO
-    "default".songs
-FROM
-    INFILE '/Users/kt/dev/source/features-store/data/songs.csv' SETTINGS input_format_allow_errors_ratio = 0.2 FORMAT CSV; 
+INSERT INTO "default".songs
+FROM INFILE '/Users/kt/dev/source/features-store/data/songs.csv' SETTINGS input_format_allow_errors_ratio = 0.2 FORMAT CSV; 
     
 -- small dataset tp test ReplacingMergeTree
 create table trending (
-        rank Int32,
-        track String,
-        artist String,
-        version_time DateTime,
-    ) ENGINE = ReplacingMergeTree(version_time)
-ORDER BY
-    rank;
+    rank Int32,
+    track String,
+    artist String,
+    version_time DateTime,
+)
+ENGINE = ReplacingMergeTree(version_time)
+ORDER BY rank;
 
-INSERT INTO
-    trending
-Values
+INSERT INTO trending Values
     (1, 'A Bar Song (Tipsy)', 'Shaboozey', now())
     (2, 'I Had Some Help', 'Post Malone', now())
     (3, 'Not Like Us', 'Kendrick Lamar', now())

@@ -7,7 +7,7 @@ spec:
     clusters:
       - name: chk-{{ .Values.name }}
         layout:
-          replicasCount: {{ .Values.replicas }}
+          replicasCount: {{ .Values.keeper.replicas }}
     settings:
       logger/level: "trace"
       logger/console: "true"

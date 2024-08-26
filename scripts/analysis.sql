@@ -1,4 +1,6 @@
 -- Top trending songs accounting for row updates
+select * from trending;
+
 select *
 from trending
 order by rank, version_time desc
@@ -23,7 +25,7 @@ from songs s
 where has(s.artists, 'Michael Jackson')
 order by s.album, s.track_number;
 
-select s.album, corr(s.danceability, s.tempo)
+select s.album, corrStable(s.danceability, s.tempo)
 from songs s
 where has(s.artists, 'Michael Jackson')
 group by s.album;

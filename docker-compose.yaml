@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  clickhouse:
+    image: bitnami/clickhouse:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ~/apps/:/bitnami/clickhouse
+    ports:
+      - "8123:8123"
+      - "9000:9000"

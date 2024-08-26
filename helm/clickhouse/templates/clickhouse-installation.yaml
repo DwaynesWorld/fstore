@@ -1,0 +1,21 @@
+apiVersion: "clickhouse.altinity.com/v1"
+kind: "ClickHouseInstallation"
+metadata:
+  name: {{ .Values.name }}
+spec:
+  configuration:
+    users:
+      default/password: password
+      test/password: password
+      test/profile: test_profile
+      test/quota: test_quota
+    profiles:
+      test_profile/max_memory_usage: 1000000000
+      test_profile/readonly: 1
+    quotas:
+      test_quota/interval/duration: 3600
+    clusters:
+      - name:  {{ .Values.name }}-cluster
+        layout:
+          shardsCount: {{ .Values.shards }}
+          replicasCount: {{ .Values.replicas }}

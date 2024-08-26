@@ -1,0 +1,3 @@
+name: kdt
+shards: 1
+replicas: 2
